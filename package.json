@@ -1,0 +1,61 @@
+{
+  "name": "nodewatch",
+  "version": "1.0.0",
+  "description": "Zero-config, one-line terminal dashboard for Node.js apps. Real-time CPU, memory, event loop, HTTP metrics, and logs.",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js"
+    },
+    "./auto": {
+      "types": "./dist/auto.d.ts",
+      "require": "./dist/auto.js",
+      "import": "./dist/auto.js"
+    }
+  },
+  "bin": {
+    "nodewatch": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "prepublishOnly": "npm run build",
+    "example": "npm run build && node examples/demo.js"
+  },
+  "keywords": [
+    "monitor",
+    "dashboard",
+    "terminal",
+    "cli",
+    "metrics",
+    "cpu",
+    "memory",
+    "event-loop",
+    "performance",
+    "devtools",
+    "nodejs",
+    "real-time",
+    "zero-config"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3"
+  }
+}
