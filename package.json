@@ -22,6 +22,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
+    "test": "node --test test/*.test.js",
+    "pretest": "npm run build",
     "prepublishOnly": "npm run build",
     "example": "npm run build && node examples/demo.js"
   },
@@ -52,7 +54,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/LittleBoy9/nodewatch.git"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
