@@ -114,7 +114,7 @@ export class Dashboard {
   // ════════════════════════════════════════════════════════
 
   private renderHeader(metrics: Metrics, w: number): string {
-    const title = `${color.bold}${color.brightCyan} ⚡ nodewatch ${color.reset}`;
+    const title = `${color.bold}${color.brightCyan} ⚡ nodewatcher ${color.reset}`;
     const statusColor = metrics.process.status === 'running' ? color.brightGreen : color.brightRed;
     const statusIcon = metrics.process.status === 'running' ? '●' : '✖';
     const status = `${statusColor}${statusIcon} ${metrics.process.status.toUpperCase()}${color.reset}`;
@@ -547,7 +547,7 @@ export class Dashboard {
   }
 
   private renderFooter(w: number): string {
-    const help = `${color.dim} Tab${color.reset}${color.gray} switch view${color.reset}  ${color.dim}q${color.reset}${color.gray} exit${color.reset}  ${color.dim}nodewatch v1.0.0${color.reset}`;
+    const help = `${color.dim} Tab${color.reset}${color.gray} switch view${color.reset}  ${color.dim}q${color.reset}${color.gray} exit${color.reset}  ${color.dim}nodewatcher v1.0.0${color.reset}`;
     return fitWidth(help, w);
   }
 

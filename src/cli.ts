@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * CLI wrapper: npx nodewatch app.js [args...]
+ * CLI wrapper: npx nodewatcher app.js [args...]
  *
- * Spawns the target script with nodewatch/auto preloaded via --require.
+ * Spawns the target script with nodewatcher/auto preloaded via --require.
  * Zero code changes needed in the target app.
  */
 
@@ -18,7 +18,7 @@ if (args.length === 0 || args[0] === '--help' || args[0] === '-h') {
 }
 
 if (args[0] === '--version' || args[0] === '-v') {
-  console.log('nodewatch v1.0.0');
+  console.log('nodewatcher v1.0.0');
   process.exit(0);
 }
 
@@ -28,7 +28,7 @@ const targetArgs = args.slice(1);
 // Resolve the auto-preload script path
 const autoPreload = path.resolve(__dirname, 'auto.js');
 
-// Build node args: preload nodewatch, then run the target
+// Build node args: preload nodewatcher, then run the target
 const nodeArgs = [
   '--require', autoPreload,
   targetScript,
@@ -38,7 +38,7 @@ const nodeArgs = [
 // Spawn with inherited stdio for full terminal passthrough
 const child = spawn(process.execPath, nodeArgs, {
   stdio: 'inherit',
-  env: { ...process.env, NODEWATCH_CLI: '1' },
+  env: { ...process.env, NODEWATCHER_CLI: '1' },
 });
 
 child.on('exit', (code, signal) => {
@@ -50,7 +50,7 @@ child.on('exit', (code, signal) => {
 });
 
 child.on('error', (err) => {
-  console.error(`nodewatch: failed to start "${targetScript}": ${err.message}`);
+  console.error(`nodewatcher: failed to start "${targetScript}": ${err.message}`);
   process.exit(1);
 });
 
@@ -63,21 +63,21 @@ for (const sig of ['SIGINT', 'SIGTERM', 'SIGHUP'] as const) {
 
 function printUsage(): void {
   console.log(`
-  ${'\x1b[1m\x1b[96m'}⚡ nodewatch${'\x1b[0m'} — Zero-config terminal dashboard for Node.js
+  ${'\x1b[1m\x1b[96m'}⚡ nodewatcher${'\x1b[0m'} — Zero-config terminal dashboard for Node.js
 
   ${'\x1b[1m'}Usage:${'\x1b[0m'}
-    nodewatch <script.js> [args...]    Run with dashboard overlay
-    nodewatch --help                   Show this help
-    nodewatch --version                Show version
+    nodewatcher <script.js> [args...]    Run with dashboard overlay
+    nodewatcher --help                   Show this help
+    nodewatcher --version                Show version
 
   ${'\x1b[1m'}Examples:${'\x1b[0m'}
-    nodewatch server.js
-    nodewatch app.js --port 3000
-    npx nodewatch ./dist/index.js
+    nodewatcher server.js
+    nodewatcher app.js --port 3000
+    npx nodewatcher ./dist/index.js
 
   ${'\x1b[1m'}Programmatic:${'\x1b[0m'}
-    import "nodewatch/auto"            One-line auto-start
-    import { startNodewatch } from "nodewatch"
+    import "nodewatcher/auto"            One-line auto-start
+    import { startNodewatch } from "nodewatcher"
 
   ${'\x1b[1m'}In dashboard:${'\x1b[0m'}
     Tab    Switch views (Overview / Memory / HTTP / Logs)

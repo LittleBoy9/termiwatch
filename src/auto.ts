@@ -1,10 +1,10 @@
 /**
- * nodewatch/auto - Zero-config auto-start dashboard
+ * nodewatcher/auto - Zero-config auto-start dashboard
  *
  * Usage:
- *   import "nodewatch/auto"
+ *   import "nodewatcher/auto"
  *   // or
- *   require("nodewatch/auto")
+ *   require("nodewatcher/auto")
  *
  * That's it. The dashboard starts automatically.
  */

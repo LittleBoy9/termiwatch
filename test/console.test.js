@@ -32,15 +32,15 @@ describe('ConsolePatcher', () => {
     patcher.restore();
   });
 
-  it('filters nodewatch sentinel output', () => {
+  it('filters nodewatcher sentinel output', () => {
     const patcher = new ConsolePatcher(100);
     patcher.patch();
 
-    process.stdout.write('\x1b[nodewatch]dashboard output');
+    process.stdout.write('\x1b[nodewatcher]dashboard output');
 
     const logs = patcher.getLogs();
     const found = logs.find((l) => l.message.includes('dashboard output'));
-    assert.equal(found, undefined, 'should not capture nodewatch sentinel output');
+    assert.equal(found, undefined, 'should not capture nodewatcher sentinel output');
 
     patcher.restore();
   });

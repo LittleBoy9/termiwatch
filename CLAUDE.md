@@ -1,4 +1,4 @@
-# nodewatch
+# nodewatcher
 
 Zero-config, one-line terminal dashboard for Node.js apps. Zero runtime dependencies.
 
@@ -8,17 +8,17 @@ Zero-config, one-line terminal dashboard for Node.js apps. Zero runtime dependen
 npm run build        # Compile TypeScript
 npm run dev          # Watch mode
 npm run example      # Build + run demo
-npx nodewatch app.js # CLI wrapper (zero code changes)
+npx nodewatcher app.js # CLI wrapper (zero code changes)
 ```
 
 ## Architecture
 
 ```
 src/
-├── auto.ts              # Side-effect import: `import "nodewatch/auto"`
+├── auto.ts              # Side-effect import: `import "nodewatcher/auto"`
 ├── index.ts             # Public API re-exports
 ├── collector.ts         # Singleton orchestrator (Nodewatch class)
-├── cli.ts               # CLI entry: `npx nodewatch app.js` (spawns child with --require)
+├── cli.ts               # CLI entry: `npx nodewatcher app.js` (spawns child with --require)
 ├── types.ts             # All interfaces, config defaults, DashboardView type
 ├── metrics/
 │   ├── cpu.ts           # process.cpuUsage() delta tracking
@@ -64,9 +64,9 @@ startNodewatch() → Nodewatch (collector.ts)
 
 ## Three Usage Modes
 
-1. **One-line import**: `import "nodewatch/auto"` — patches and starts immediately
-2. **Manual API**: `import { startNodewatch } from "nodewatch"` — full control
-3. **CLI wrapper**: `npx nodewatch app.js` — zero code changes, uses `--require` preload
+1. **One-line import**: `import "nodewatcher/auto"` — patches and starts immediately
+2. **Manual API**: `import { startNodewatch } from "nodewatcher"` — full control
+3. **CLI wrapper**: `npx nodewatcher app.js` — zero code changes, uses `--require` preload
 
 ## Dashboard Views (Tab to cycle)
 
@@ -80,10 +80,10 @@ startNodewatch() → Nodewatch (collector.ts)
 
 - **Zero dependencies**: Custom ANSI renderer using Unicode box-drawing, braille sparklines (U+2800-U+28FF). No blessed, no ink.
 - **HTTP patching**: Uses `require('http')` (not TS `import *`) for mutable module. `Object.defineProperty()` for modern Node.
-- **Worker patching**: Uses `Module._load` interception + `Proxy` on Worker constructor. Also patches already-loaded module cache. nodewatch must be loaded BEFORE worker_threads for tracking to work (which is the natural pattern with `import "nodewatch/auto"` at file top or CLI wrapper).
+- **Worker patching**: Uses `Module._load` interception + `Proxy` on Worker constructor. Also patches already-loaded module cache. nodewatcher must be loaded BEFORE worker_threads for tracking to work (which is the natural pattern with `import "nodewatcher/auto"` at file top or CLI wrapper).
 - **Network monitoring**: Extracts socket stats (remoteAddress, bytesRead/Written) from `_getActiveHandles()`. DNS timing via `PerformanceObserver({ entryTypes: ['dns'] })`.
 - **Async tracking**: Uses `_getActiveHandles().length` + `_getActiveRequests().length` as lightweight proxy. Avoids raw `async_hooks` which causes 30-97% overhead in Promise-heavy workloads.
-- **Console patching**: Wraps `process.stdout.write` (not `console.log`). Dashboard output marked with `\x1b[nodewatch]` sentinel.
+- **Console patching**: Wraps `process.stdout.write` (not `console.log`). Dashboard output marked with `\x1b[nodewatcher]` sentinel.
 - **Production safe**: All timers `.unref()`. TTY detection. Alt-screen buffer.
 - **Worker collector is async**: `worker.getHeapStatistics()` returns a Promise. Collector caches last result and updates async between ticks.
 
@@ -103,7 +103,7 @@ startNodewatch() → Nodewatch (collector.ts)
 # Full headless test (all 24 checks)
 node -e "..." # see test in conversation history
 
-# Worker test (nodewatch must load first)
+# Worker test (nodewatcher must load first)
 node -r ./dist/auto worker-app.js
 
 # CLI wrapper test
@@ -120,7 +120,7 @@ node examples/demo.js
 - `v8.getHeapSpaceStatistics()` uses snake_case (space_name not spaceName)
 - `process._getActiveHandles()` is undocumented but stable
 - GC observer entry.detail.kind is a bitmask: 1=minor, 2=major, 4=incremental, 8=weakcb
-- Worker monitoring requires nodewatch loaded BEFORE worker_threads (natural with auto import or CLI)
+- Worker monitoring requires nodewatcher loaded BEFORE worker_threads (natural with auto import or CLI)
 - `worker.getHeapStatistics()` is async and may not exist in older Node versions
 - DNS PerformanceObserver may not be available in all Node versions — degrades gracefully
 - Module._load patching must handle both 'worker_threads' and 'node:worker_threads' prefixes

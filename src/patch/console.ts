@@ -34,7 +34,7 @@ export class ConsolePatcher {
       const str = typeof chunk === 'string' ? chunk : chunk.toString();
 
       // Don't capture our own dashboard output
-      if (!str.includes('\x1b[nodewatch]')) {
+      if (!str.includes('\x1b[nodewatcher]')) {
         self.addLog(str, 'stdout');
       }
 
@@ -55,7 +55,7 @@ export class ConsolePatcher {
     ): boolean {
       const str = typeof chunk === 'string' ? chunk : chunk.toString();
 
-      if (!str.includes('\x1b[nodewatch]')) {
+      if (!str.includes('\x1b[nodewatcher]')) {
         self.addLog(str, 'stderr');
         self.errorCount++;
       }

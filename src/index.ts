@@ -1,17 +1,17 @@
 /**
- * nodewatch - Zero-config terminal dashboard for Node.js
+ * nodewatcher - Zero-config terminal dashboard for Node.js
  *
  * Auto-start:
- *   import "nodewatch/auto"
+ *   import "nodewatcher/auto"
  *
  * Manual API:
- *   import { startNodewatch, stopNodewatch } from "nodewatch"
+ *   import { startNodewatch, stopNodewatch } from "nodewatcher"
  *   const nw = startNodewatch()
  *   const metrics = nw.collectMetrics()
  *   stopNodewatch()
  *
  * CLI wrapper (zero code changes):
- *   npx nodewatch app.js
+ *   npx nodewatcher app.js
  */
 
 export { Nodewatch, startNodewatch, stopNodewatch, getNodewatch } from './collector';
