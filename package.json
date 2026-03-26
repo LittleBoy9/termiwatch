@@ -29,6 +29,7 @@
   },
   "keywords": [
     "monitor",
+    "monitoring",
     "dashboard",
     "terminal",
     "cli",
@@ -40,9 +41,20 @@
     "devtools",
     "nodejs",
     "real-time",
-    "zero-config"
+    "zero-config",
+    "zero-dependency",
+    "http",
+    "gc",
+    "heap",
+    "profiler",
+    "process-monitor",
+    "express",
+    "fastify",
+    "nestjs",
+    "worker-threads",
+    "observability"
   ],
-  "author": "",
+  "author": "Sounak Das (https://sounakdas.in)",
   "license": "MIT",
   "engines": {
     "node": ">=16.0.0"
@@ -52,9 +64,13 @@
     "README.md",
     "LICENSE"
   ],
+  "homepage": "https://littleboy9.github.io/termiwatch",
   "repository": {
     "type": "git",
     "url": "https://github.com/LittleBoy9/termiwatch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LittleBoy9/termiwatch/issues"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",

@@ -9,6 +9,8 @@
   <a href="LICENSE"><img src="https://img.shields.io/npm/l/termiwatch?style=flat-square" alt="license"></a>
   <img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=flat-square" alt="zero dependencies">
   <img src="https://img.shields.io/node/v/termiwatch?style=flat-square" alt="node version">
+  <br><br>
+  <a href="https://littleboy9.github.io/termiwatch">Website</a> · <a href="https://www.npmjs.com/package/termiwatch">npm</a> · <a href="https://github.com/LittleBoy9/termiwatch">GitHub</a>
 </p>
 
 <br>
