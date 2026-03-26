@@ -1,20 +1,20 @@
 <p align="center">
   <br>
-  <b style="font-size: 2em;">⚡ nodewatcher</b>
+  <b style="font-size: 2em;">⚡ termiwatch</b>
   <br>
   <em>Zero-config terminal dashboard for Node.js — one line, real-time, zero dependencies.</em>
   <br><br>
-  <a href="https://www.npmjs.com/package/nodewatcher"><img src="https://img.shields.io/npm/v/nodewatcher?style=flat-square&color=cb3837" alt="npm version"></a>
-  <a href="https://www.npmjs.com/package/nodewatcher"><img src="https://img.shields.io/npm/dm/nodewatcher?style=flat-square" alt="npm downloads"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/npm/l/nodewatcher?style=flat-square" alt="license"></a>
+  <a href="https://www.npmjs.com/package/termiwatch"><img src="https://img.shields.io/npm/v/termiwatch?style=flat-square&color=cb3837" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/termiwatch"><img src="https://img.shields.io/npm/dm/termiwatch?style=flat-square" alt="npm downloads"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/npm/l/termiwatch?style=flat-square" alt="license"></a>
   <img src="https://img.shields.io/badge/dependencies-0-brightgreen?style=flat-square" alt="zero dependencies">
-  <img src="https://img.shields.io/node/v/nodewatcher?style=flat-square" alt="node version">
+  <img src="https://img.shields.io/node/v/termiwatch?style=flat-square" alt="node version">
 </p>
 
 <br>
 
 <pre align="center">
- ⚡ nodewatcher  │ ● RUNNING │ PID 1234 │ v20.10.0 │ ↑ 2h 14m │ express 4.21.0 │ ✔ 0 errors
+ ⚡ termiwatch  │ ● RUNNING │ PID 1234 │ v20.10.0 │ ↑ 2h 14m │ express 4.21.0 │ ✔ 0 errors
  <b>Overview</b>  Memory & GC   HTTP   Network & Workers   Logs                         ← Tab →
 ┌──────────────── CPU ────────────────┐┌──────────────── MEMORY ─────────────┐
 │ <b>12.4%</b> usr:9.1%  sys:3.3%           ││ <b>RSS</b> 84.2MB  <b>Heap</b> 28.1/52.0MB       │
@@ -39,12 +39,12 @@
 │ 14:23:07 ERR [app] Connection timeout to redis:6379                       │
 │ 14:23:10 LOG [app] Health check OK - 12ms                                 │
 └───────────────────────────────────────────────────────────────────────────┘
- Tab switch view  q exit  nodewatcher v1.0.0
+ Tab switch view  q exit  termiwatch v1.0.0
 </pre>
 
 <br>
 
-## Why nodewatcher?
+## Why termiwatch?
 
 Most Node.js monitoring tools are either **dead**, **heavy**, or **require external services**:
 
@@ -54,11 +54,11 @@ Most Node.js monitoring tools are either **dead**, **heavy**, or **require exter
 | clinic.js | Dead (3 years) | Native compilation | CLI profiling sessions |
 | appmetrics-dash | Dead (6 years) | C++ native addon | Code changes + browser |
 | PM2 monit | Active | Entire PM2 ecosystem | Full process manager |
-| **nodewatcher** | **Active** | **Zero** | **One line** |
+| **termiwatch** | **Active** | **Zero** | **One line** |
 
-**nodewatcher** gives you Datadog-level metrics in your terminal with zero setup:
+**termiwatch** gives you Datadog-level metrics in your terminal with zero setup:
 
-- **One line** — `import "nodewatcher/auto"` and you're done
+- **One line** — `import "termiwatch/auto"` and you're done
 - **Zero dependencies** — custom ANSI renderer, no native addons, nothing to break
 - **14 metric categories** — CPU, memory, event loop, GC pauses, heap spaces, HTTP, network I/O, DNS, worker threads, and more
 - **5 dashboard views** — Tab to cycle between Overview, Memory, HTTP, Network, and Logs
@@ -72,7 +72,7 @@ Most Node.js monitoring tools are either **dead**, **heavy**, or **require exter
 ### Install
 
 ```bash
-npm install nodewatcher
+npm install termiwatch
 ```
 
 ### Use (pick one)
@@ -80,7 +80,7 @@ npm install nodewatcher
 **Option 1 — One line** (recommended)
 
 ```js
-import "nodewatcher/auto"
+import "termiwatch/auto"
 
 // ... your app code below. That's it.
 ```
@@ -88,19 +88,19 @@ import "nodewatcher/auto"
 **Option 2 — CLI wrapper** (zero code changes)
 
 ```bash
-npx nodewatcher server.js
+npx termiwatch server.js
 ```
 
 **Option 3 — Manual API**
 
 ```js
-import { startNodewatch, stopNodewatch } from "nodewatcher"
+import { startTermiwatch, stopTermiwatch } from "termiwatch"
 
-const nw = startNodewatch({ refreshInterval: 500 })
+const nw = startTermiwatch({ refreshInterval: 500 })
 
 // Later...
 const metrics = nw.collectMetrics()
-stopNodewatch()
+stopTermiwatch()
 ```
 
 <br>
@@ -154,7 +154,7 @@ Full-screen log viewer — all captured stdout/stderr/errors with timestamps, co
 
 ## Auto-Detection
 
-nodewatcher automatically detects your framework and runtime environment — no config needed.
+termiwatch automatically detects your framework and runtime environment — no config needed.
 
 **Frameworks:** Express, Fastify, Koa, Hapi, NestJS, Next.js
 
@@ -163,19 +163,19 @@ nodewatcher automatically detects your framework and runtime environment — no 
 Detected framework and runtime are shown as badges in the dashboard header:
 
 ```
-⚡ nodewatcher │ ● RUNNING │ PID 1234 │ v20.10.0 │ ↑ 2h │ express 4.21.0 │ nodemon
+⚡ termiwatch │ ● RUNNING │ PID 1234 │ v20.10.0 │ ↑ 2h │ express 4.21.0 │ nodemon
 ```
 
 <br>
 
 ## API Reference
 
-### `startNodewatch(config?)`
+### `startTermiwatch(config?)`
 
-Start monitoring and return the `Nodewatch` instance.
+Start monitoring and return the `Termiwatch` instance.
 
 ```ts
-const nw = startNodewatch({
+const nw = startTermiwatch({
   refreshInterval: 1000,  // ms between updates (default: 1000)
   historySize: 60,        // data points for sparklines (default: 60)
   patchHttp: true,        // track HTTP requests (default: true)
@@ -184,23 +184,23 @@ const nw = startNodewatch({
 })
 ```
 
-### `stopNodewatch()`
+### `stopTermiwatch()`
 
 Stop monitoring, restore console, clean up.
 
 ```ts
-stopNodewatch()
+stopTermiwatch()
 ```
 
-### `getNodewatch()`
+### `getTermiwatch()`
 
-Get the singleton instance (useful when using `nodewatcher/auto`).
+Get the singleton instance (useful when using `termiwatch/auto`).
 
 ```ts
-import "nodewatcher/auto"
-import { getNodewatch } from "nodewatcher"
+import "termiwatch/auto"
+import { getTermiwatch } from "termiwatch"
 
-const nw = getNodewatch()
+const nw = getTermiwatch()
 const metrics = nw.collectMetrics()
 ```
 
@@ -238,27 +238,27 @@ const logs = nw.getLogs()
 
 ```bash
 # Run any Node.js script with the dashboard
-npx nodewatcher server.js
+npx termiwatch server.js
 
 # Pass arguments through
-npx nodewatcher app.js --port 3000 --env production
+npx termiwatch app.js --port 3000 --env production
 
 # Help
-npx nodewatcher --help
+npx termiwatch --help
 ```
 
-The CLI wrapper uses `--require` to preload nodewatcher before your code runs — zero modifications needed.
+The CLI wrapper uses `--require` to preload termiwatch before your code runs — zero modifications needed.
 
 <br>
 
 ## Headless Mode
 
-Use nodewatcher for metrics collection without the dashboard:
+Use termiwatch for metrics collection without the dashboard:
 
 ```ts
-import { startNodewatch } from "nodewatcher"
+import { startTermiwatch } from "termiwatch"
 
-const nw = startNodewatch({ showDashboard: false })
+const nw = startTermiwatch({ showDashboard: false })
 
 setInterval(() => {
   const m = nw.collectMetrics()
@@ -273,13 +273,13 @@ setInterval(() => {
 }, 5000)
 ```
 
-nodewatcher also skips the dashboard automatically in non-TTY environments (CI, piped output, Docker logs).
+termiwatch also skips the dashboard automatically in non-TTY environments (CI, piped output, Docker logs).
 
 <br>
 
 ## How It Works
 
-nodewatcher uses **only Node.js built-in APIs** — no native addons, no external processes:
+termiwatch uses **only Node.js built-in APIs** — no native addons, no external processes:
 
 - **Terminal UI**: Custom ANSI escape code renderer with Unicode box-drawing characters and braille sparklines (U+2800-U+28FF) for 8x resolution charts
 - **HTTP tracking**: Monkey-patches `http.createServer` using the same APM technique as Datadog and New Relic
@@ -301,7 +301,7 @@ nodewatcher uses **only Node.js built-in APIs** — no native addons, no externa
 <details>
 <summary><b>Does it affect my app's performance?</b></summary>
 
-Minimal impact. Metrics collection uses Node.js built-in APIs (`process.cpuUsage()`, `perf_hooks`, `v8` module) which are designed for production use. The HTTP monkey-patch adds ~0.01ms per request. The dashboard renders in an alt-screen buffer on a 1s interval with change detection to avoid unnecessary writes. All timers are `.unref()`'d so nodewatcher never keeps your process alive.
+Minimal impact. Metrics collection uses Node.js built-in APIs (`process.cpuUsage()`, `perf_hooks`, `v8` module) which are designed for production use. The HTTP monkey-patch adds ~0.01ms per request. The dashboard renders in an alt-screen buffer on a 1s interval with change detection to avoid unnecessary writes. All timers are `.unref()`'d so termiwatch never keeps your process alive.
 
 </details>
 
@@ -315,28 +315,28 @@ Yes. Use `showDashboard: false` in production to collect metrics without the ter
 <details>
 <summary><b>Does it break console.log?</b></summary>
 
-No. nodewatcher wraps `process.stdout.write` (not `console.log` directly), so stack traces, source locations, and debugger integration are preserved. When the dashboard is visible, console output is captured and shown in the Logs panel. When the dashboard exits, original behavior is restored.
+No. termiwatch wraps `process.stdout.write` (not `console.log` directly), so stack traces, source locations, and debugger integration are preserved. When the dashboard is visible, console output is captured and shown in the Logs panel. When the dashboard exits, original behavior is restored.
 
 </details>
 
 <details>
 <summary><b>Does it work with Express / Fastify / Koa?</b></summary>
 
-Yes. nodewatcher auto-detects your framework and patches `http.createServer` at the Node.js level, so it works with any framework that uses Node's built-in HTTP server — which is all of them.
+Yes. termiwatch auto-detects your framework and patches `http.createServer` at the Node.js level, so it works with any framework that uses Node's built-in HTTP server — which is all of them.
 
 </details>
 
 <details>
 <summary><b>Does it work with worker threads?</b></summary>
 
-Yes. nodewatcher intercepts the `Worker` constructor and monitors each thread's event loop utilization and heap usage from the main thread — no code changes in your workers needed. Just make sure nodewatcher is imported before `worker_threads`.
+Yes. termiwatch intercepts the `Worker` constructor and monitors each thread's event loop utilization and heap usage from the main thread — no code changes in your workers needed. Just make sure termiwatch is imported before `worker_threads`.
 
 </details>
 
 <details>
 <summary><b>Can I use it with PM2 / nodemon / tsx?</b></summary>
 
-Yes. nodewatcher detects these runtimes automatically and shows them in the dashboard header. For PM2, it shows the instance ID and cluster mode.
+Yes. termiwatch detects these runtimes automatically and shows them in the dashboard header. For PM2, it shows the instance ID and cluster mode.
 
 </details>
 

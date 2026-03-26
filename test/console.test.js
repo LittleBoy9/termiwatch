@@ -32,15 +32,15 @@ describe('ConsolePatcher', () => {
     patcher.restore();
   });
 
-  it('filters nodewatcher sentinel output', () => {
+  it('filters termiwatch sentinel output', () => {
     const patcher = new ConsolePatcher(100);
     patcher.patch();
 
-    process.stdout.write('\x1b[nodewatcher]dashboard output');
+    process.stdout.write('\x1b[termiwatch]dashboard output');
 
     const logs = patcher.getLogs();
     const found = logs.find((l) => l.message.includes('dashboard output'));
-    assert.equal(found, undefined, 'should not capture nodewatcher sentinel output');
+    assert.equal(found, undefined, 'should not capture termiwatch sentinel output');
 
     patcher.restore();
   });

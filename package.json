@@ -1,5 +1,5 @@
 {
-  "name": "nodewatcher",
+  "name": "termiwatch",
   "version": "1.0.0",
   "description": "Zero-config, one-line terminal dashboard for Node.js apps. Real-time CPU, memory, event loop, HTTP metrics, and logs.",
   "main": "./dist/index.js",
@@ -17,7 +17,7 @@
     }
   },
   "bin": {
-    "nodewatcher": "./dist/cli.js"
+    "termiwatch": "./dist/cli.js"
   },
   "scripts": {
     "build": "tsc",
@@ -54,7 +54,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/LittleBoy9/nodewatcher.git"
+    "url": "https://github.com/LittleBoy9/termiwatch.git"
   },
   "devDependencies": {
     "@types/node": "^25.5.0",

@@ -1,20 +1,20 @@
 /**
- * nodewatcher - Zero-config terminal dashboard for Node.js
+ * termiwatch - Zero-config terminal dashboard for Node.js
  *
  * Auto-start:
- *   import "nodewatcher/auto"
+ *   import "termiwatch/auto"
  *
  * Manual API:
- *   import { startNodewatch, stopNodewatch } from "nodewatcher"
- *   const nw = startNodewatch()
+ *   import { startTermiwatch, stopTermiwatch } from "termiwatch"
+ *   const nw = startTermiwatch()
  *   const metrics = nw.collectMetrics()
- *   stopNodewatch()
+ *   stopTermiwatch()
  *
  * CLI wrapper (zero code changes):
- *   npx nodewatcher app.js
+ *   npx termiwatch app.js
  */
 
-export { Nodewatch, startNodewatch, stopNodewatch, getNodewatch } from './collector';
+export { Termiwatch, startTermiwatch, stopTermiwatch, getTermiwatch } from './collector';
 export { detectFramework } from './detect/framework';
 export { detectRuntime } from './detect/runtime';
 export { DEFAULT_CONFIG } from './types';
@@ -36,6 +36,6 @@ export type {
   AsyncMetrics,
   ProcessMetrics,
   LogEntry,
-  NodewatchConfig,
+  TermiwatchConfig,
   DashboardView,
 } from './types';

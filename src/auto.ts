@@ -1,14 +1,14 @@
 /**
- * nodewatcher/auto - Zero-config auto-start dashboard
+ * termiwatch/auto - Zero-config auto-start dashboard
  *
  * Usage:
- *   import "nodewatcher/auto"
+ *   import "termiwatch/auto"
  *   // or
- *   require("nodewatcher/auto")
+ *   require("termiwatch/auto")
  *
  * That's it. The dashboard starts automatically.
  */
 
-import { startNodewatch } from './collector';
+import { startTermiwatch } from './collector';
 
-startNodewatch();
+startTermiwatch();

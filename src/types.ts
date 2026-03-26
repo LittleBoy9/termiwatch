@@ -156,7 +156,7 @@ export interface LogEntry {
   type: 'stdout' | 'stderr' | 'error';
 }
 
-export interface NodewatchConfig {
+export interface TermiwatchConfig {
   refreshInterval: number;   // ms between UI refreshes
   historySize: number;       // number of data points for sparklines
   patchHttp: boolean;        // auto-patch http module
@@ -164,7 +164,7 @@ export interface NodewatchConfig {
   showDashboard: boolean;    // render terminal UI
 }
 
-export const DEFAULT_CONFIG: NodewatchConfig = {
+export const DEFAULT_CONFIG: TermiwatchConfig = {
   refreshInterval: 1000,
   historySize: 60,
   patchHttp: true,

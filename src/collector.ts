@@ -14,10 +14,10 @@ import { ConsolePatcher } from './patch/console';
 import { Dashboard } from './ui/dashboard';
 import { detectFramework } from './detect/framework';
 import { detectRuntime } from './detect/runtime';
-import { Metrics, NodewatchConfig, DEFAULT_CONFIG, LogEntry, WorkerMetrics } from './types';
+import { Metrics, TermiwatchConfig, DEFAULT_CONFIG, LogEntry, WorkerMetrics } from './types';
 
-export class Nodewatch {
-  private config: NodewatchConfig;
+export class Termiwatch {
+  private config: TermiwatchConfig;
   private cpuCollector: CpuCollector;
   private memoryCollector: MemoryCollector;
   private eventLoopCollector: EventLoopCollector;
@@ -40,7 +40,7 @@ export class Nodewatch {
     eluHistory: [],
   };
 
-  constructor(config: Partial<NodewatchConfig> = {}) {
+  constructor(config: Partial<TermiwatchConfig> = {}) {
     this.config = { ...DEFAULT_CONFIG, ...config };
     this.cpuCollector = new CpuCollector(this.config.historySize);
     this.memoryCollector = new MemoryCollector(this.config.historySize);
@@ -197,25 +197,25 @@ export class Nodewatch {
   }
 }
 
-let instance: Nodewatch | null = null;
+let instance: Termiwatch | null = null;
 
-export function getNodewatch(): Nodewatch {
+export function getTermiwatch(): Termiwatch {
   if (!instance) {
-    instance = new Nodewatch();
+    instance = new Termiwatch();
   }
   return instance;
 }
 
-export function startNodewatch(config?: Partial<NodewatchConfig>): Nodewatch {
+export function startTermiwatch(config?: Partial<TermiwatchConfig>): Termiwatch {
   if (instance) {
     return instance;
   }
-  instance = new Nodewatch(config);
+  instance = new Termiwatch(config);
   instance.start();
   return instance;
 }
 
-export function stopNodewatch(): void {
+export function stopTermiwatch(): void {
   if (instance) {
     instance.stop();
     instance = null;

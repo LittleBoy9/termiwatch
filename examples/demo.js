@@ -1,5 +1,5 @@
 /**
- * nodewatcher demo — run with: npm run example
+ * termiwatch demo — run with: npm run example
  *
  * This simulates a real Node.js app with:
  * - An HTTP server receiving requests
